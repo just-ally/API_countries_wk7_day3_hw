@@ -5,7 +5,16 @@ const Countries = function(){
 }
 
 Countries.prototype.bindEvents = function(){
+  PubSub.subscribe('SelectView:country-selected', (event) => {
+    const index = event.detail;
+    const foundCountry = this.findCountry(index);
+    PubSub.publish('Countries:country-found', foundCountry);
+    console.log('Published on country-found:', foundCountry);
+  });
+}
 
+Countries.prototype.findCountry = function(index){
+  return this.countries[index];
 }
 
 Countries.prototype.getData = function(){
