@@ -9,7 +9,6 @@ Countries.prototype.bindEvents = function(){
     const index = event.detail;
     const foundCountry = this.findCountry(index);
     PubSub.publish('Countries:country-found', foundCountry);
-    console.log('Published on country-found:', foundCountry);
   });
 }
 
