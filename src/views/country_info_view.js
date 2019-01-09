@@ -25,6 +25,17 @@ CountryInfoView.prototype.render = function(country){
   countryFlag.classList.add('flag-image');
   countryFlag.src = country.flag;
   this.container.appendChild(countryFlag);
+
+  console.log('Country languages:', country.languages.name);
+  const countryLanguages = document.createElement('ul');
+  country.languages.forEach((language) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = language.name;
+    countryLanguages.appendChild(listItem);
+  });
+  this.container.appendChild(countryLanguages);
+
+
 }
 
 module.exports = CountryInfoView;
